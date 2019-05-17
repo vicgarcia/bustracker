@@ -1,0 +1,10 @@
+# exclude environment files
+.env
+
+# exclude python files
+__pycache__
+.pytest_cache
+
+# exclude junk
+.DS_Store
+.vscode
