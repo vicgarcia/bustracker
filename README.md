@@ -12,7 +12,7 @@ git clone
 pipenv install --dev
 
 # add .env file w/ CTA api key
-echo 'CTA_API_KEY=CTA-API-KEY' > .env
+echo 'CTA_API_KEY=YOUR-API-KEY-HERE' > .env
 
 # run tests
 pipenv run python -m pytest (--disable-vcr to bypass vcr and use live api)
