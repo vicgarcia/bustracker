@@ -8,14 +8,14 @@ Getting started ...
 # clone this repository from github
 git clone
 
-# setup virtualenv and install dependencies
-pipenv install --dev
+# setup virtual environment & install dependencies
+python3 -m venv .venv
 
-# add .env file w/ CTA api key
+# create an .env file with your CTA Bustracker api key
 echo 'CTA_API_KEY=YOUR-API-KEY-HERE' > .env
 
 # run tests
-pipenv run python -m pytest (--disable-vcr to bypass vcr and use live api)
+.venv/bin/python -m pytest (--disable-vcr to bypass vcr and use live api)
 ```
 
 Usage ...
