@@ -6,16 +6,16 @@ class BusTrackerException(Exception):
     pass
 
 
-class BusTrackerApi(object):
+class BusTrackerApi:
 
     base_url = 'http://ctabustracker.com/bustime/api/v2'
-
 
     def __init__(self, api_key):
         self.api_key = api_key
 
-
-    def _get(self, url, params={}):
+    def _get(self, url, params=None):
+        if params is None:
+            params = {}
 
         # use the api key as a request param for all requests
         params['key'] = self.api_key

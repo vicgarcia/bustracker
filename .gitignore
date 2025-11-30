@@ -4,6 +4,8 @@
 # exclude python files
 __pycache__
 .pytest_cache
+*.egg-info
+dist
 
 # exclude junk
 .DS_Store

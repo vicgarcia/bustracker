@@ -1,8 +1,15 @@
 import pytest
 import re
 import os
+from pathlib import Path
+from dotenv import load_dotenv
 
 from bustracker import BusTrackerApi, BusTrackerException
+
+# load .env file if it exists
+env_path = Path(__file__).parent.parent / '.env'
+if env_path.exists():
+    load_dotenv(env_path)
 
 
 # configure pytest vcr to store yaml in ./tests/vcr/<module name>/<test name>.yaml
@@ -17,7 +24,7 @@ def vcr_cassette_dir(request):
 @pytest.fixture(scope='module')
 def vcr_config():
     return {
-        'filter_query_parameters': [ ('key', 'CTA-API-KEY'), ],
+        'filter_query_parameters': [ ('key', 'TEST-CTA-API-KEY'), ],
     }
 
 
@@ -25,7 +32,7 @@ def vcr_config():
 
 @pytest.fixture
 def bustracker():
-    return BusTrackerApi(os.getenv('CTA_API_KEY', 'api-key-not-available'))
+    return BusTrackerApi(os.getenv('TEST_CTA_API_KEY', 'api-key-not-available'))
 
 
 # test methods of bus tracker api class

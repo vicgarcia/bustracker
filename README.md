@@ -2,23 +2,15 @@ A python module for use with the Chicago Transit Authority BusTracker API
 
 Get an API key and read the documentation at https://www.transitchicago.com/developers/bustracker/
 
-Getting started ...
+## Installation
 
-```
-# clone this repository from github
-git clone
+Install directly from GitHub using pip:
 
-# setup virtual environment & install dependencies
-python3 -m venv .venv
-
-# create an .env file with your CTA Bustracker api key
-echo 'CTA_API_KEY=YOUR-API-KEY-HERE' > .env
-
-# run tests
-.venv/bin/python -m pytest (--disable-vcr to bypass vcr and use live api)
+```bash
+pip install git+https://github.com/vicgarcia/bustracker.git
 ```
 
-Usage ...
+## Usage
 
 ```
 # create the api object
@@ -65,4 +57,31 @@ pprint(vehicles)
   'tmstmp': '20190514 23:21',
   'vid': '6803',
   'zone': ''}]
+```
+
+## Development
+
+To run tests locally:
+
+```bash
+# clone the repository
+git clone https://github.com/vicgarcia/bustracker.git
+cd bustracker
+
+# setup virtual environment & install dependencies
+python3 -m venv .venv
+.venv/bin/pip install -e ".[dev]"
+
+# run tests (uses VCR cassettes, no API key needed)
+.venv/bin/python -m pytest
+
+# to test against live API, set TEST_CTA_API_KEY and disable VCR
+echo 'TEST_CTA_API_KEY=YOUR-API-KEY' > .env
+.venv/bin/python -m pytest --disable-vcr
+
+# build a wheel
+.venv/bin/python -m build
+
+# install the wheel
+pip install bustracker-1.0.0-py3-none-any.whl
 ```
